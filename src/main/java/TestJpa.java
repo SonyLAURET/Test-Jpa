@@ -15,6 +15,11 @@ public class TestJpa {
 			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pu_essai");
 			EntityManager em = entityManagerFactory.createEntityManager();
 
+			em.getTransaction().begin();
+			Livre livre1 = new Livre();
+			livre1.findById(em, 1);
+			livre1.findByTitle(em, "Germinal");
+
 		} catch (IllegalArgumentException e) {
 			LOG.error("entityManager exception : ", e);
 		}
