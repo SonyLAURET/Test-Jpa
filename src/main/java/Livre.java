@@ -1,8 +1,10 @@
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
-import javax.persistence.Query;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.slf4j.Logger;
@@ -23,6 +25,9 @@ public class Livre {
 	@Column(name = "Auteur", length = 50, nullable = false)
 	private String auteur;
 
+	@ManyToMany(mappedBy = "livres")
+	private Set<Emprunt> emprunts;
+
 	public Livre() {
 	}
 
@@ -32,12 +37,6 @@ public class Livre {
 			LOG.error(livre1.toString());
 		}
 
-	}
-
-	public void findByTitle(EntityManager em, String title) {
-		Query query = em.createQuery("from Livre where titre='" + title + "'");
-		Livre livre1 = (Livre) query.getSingleResult();
-		LOG.error(livre1.toString());
 	}
 
 	@Override

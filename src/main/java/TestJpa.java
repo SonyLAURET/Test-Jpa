@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,9 +19,22 @@ public class TestJpa {
 			EntityManager em = entityManagerFactory.createEntityManager();
 
 			em.getTransaction().begin();
-			Livre livre1 = new Livre();
-			livre1.findById(em, 1);
-			livre1.findByTitle(em, "Germinal");
+			// Livre livre1 = new Livre();
+			// livre1.findById(em, 1);
+			// livre1.findByTitle(em, "Germinal");
+
+			// Set<Livre> livres = em.find(Emprunt.class, 1).getLivres();
+			// Iterator<Livre> it = livres.iterator();
+			// while (it.hasNext()) {
+			// LOG.error(it.next().toString());
+			//
+			// }
+
+			Set<Emprunt> emprunts = em.find(Client.class, 1).getEmprunts();
+			Iterator<Emprunt> ite = emprunts.iterator();
+			while (ite.hasNext()) {
+				LOG.error(ite.next().toString());
+			}
 
 		} catch (IllegalArgumentException e) {
 			LOG.error("entityManager exception : ", e);
