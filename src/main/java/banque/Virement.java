@@ -1,6 +1,6 @@
 package banque;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Virement extends AbstractOperation {
 
 	}
 
-	public Virement(String beneficaire, LocalDateTime date, double montant, String motif) {
+	public Virement(String beneficaire, LocalDate date, double montant, String motif) {
 		this.setDate(date);
 		this.setMontant(montant);
 		this.setMotif(motif);

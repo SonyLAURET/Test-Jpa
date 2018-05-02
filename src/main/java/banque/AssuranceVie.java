@@ -3,11 +3,13 @@ package banque;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "assuranceVie")
+@Table(name = "assuranceVieSingleTable")
+@DiscriminatorColumn(name = "assurance Vie")
 public class AssuranceVie extends AbstractCompte {
 
 	@Column(name = "dateFin", nullable = true)

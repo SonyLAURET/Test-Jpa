@@ -1,11 +1,13 @@
 package banque;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "livretA")
+@Table(name = "livretASingleTable")
+@DiscriminatorColumn(name = "livret A")
 public class LivretA extends AbstractCompte {
 
 	@Column(name = "taux", length = 50, nullable = false)

@@ -3,6 +3,7 @@ package banque;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,8 +16,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "compte")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "compteSingleTable")
+
+/** heritage "single table */
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE")
+
+/**
+ * heritage "table per subclass"
+ * 
+ * @Inheritance(strategy = InheritanceType.JOINED)
+ */
+
 public abstract class AbstractCompte {
 
 	@Id

@@ -1,7 +1,6 @@
 package banque;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,11 +25,14 @@ public class TestJpaBanque {
 			em.getTransaction().begin();
 
 			/** instancie une adresse */
-			Adresse adresse = new Adresse(4, "rue de test1", 44800, "Saint-test");
+			Adresse adresse = new Adresse(4, "Heritage single", 44800, "Saint-test1");
+			Adresse adresse1 = new Adresse(4, "Heritage table per class", 44800, "Saint-test2");
 
 			/** instancie une banque et la fait persister */
-			Banque banque1 = new Banque("Ca");
+			Banque banque1 = new Banque("la");
+			Banque banque2 = new Banque("bas");
 			em.persist(banque1);
+			em.persist(banque2);
 
 			/**
 			 * banque et adresse sont créées, on peut alors instancier client et
@@ -40,21 +42,22 @@ public class TestJpaBanque {
 			Set<Client> client1 = new HashSet<Client>();
 			client1.add(client);
 			em.persist(client);
+			LOG.error("blabla");
 
 			/**
 			 * on instancie assurance vie et livret A qui vont persister dans la
 			 * table compte
 			 */
-			AssuranceVie assuranceVie1 = new AssuranceVie(LocalDate.of(2015, 5, 20), 0.2, "y200", 1000);
+			AssuranceVie assuranceVie1 = new AssuranceVie(LocalDate.of(2014, 5, 20), 0.2, "200SingleTable", 1000);
 			em.persist(assuranceVie1);
 
-			LivretA livretA = new LivretA(0.3, "z300", 4500);
+			LivretA livretA = new LivretA(0.3, "300SingleTAble", 4500);
 			em.persist(livretA);
 
 			/**
 			 * on instancie virement qui va persister dans la table operation
 			 */
-			Virement virement = new Virement("Lauret", LocalDateTime.now(), 1000, "pour le loyer");
+			Virement virement = new Virement("Table per class", LocalDate.now(), 1000, "pour heriter");
 			em.persist(virement);
 
 			/** on sauvegarde les objets */

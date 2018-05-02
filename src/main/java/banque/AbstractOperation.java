@@ -1,17 +1,23 @@
 package banque;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "operation")
+@Table(name = "operationTablePerClass")
+
+/** heritage " table per class" */
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 public abstract class AbstractOperation {
 
 	@Id
@@ -25,7 +31,7 @@ public abstract class AbstractOperation {
 	private double montant;
 
 	@Column(name = "date", nullable = false)
-	private LocalDateTime date;
+	private LocalDate date;
 
 	@ManyToOne
 	@JoinColumn(name = "COMPTE_ID")
@@ -55,11 +61,11 @@ public abstract class AbstractOperation {
 		this.montant = montant;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
