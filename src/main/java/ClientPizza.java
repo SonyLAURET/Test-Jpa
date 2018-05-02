@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name = "client")
-public class Client {
+public class ClientPizza {
 
-	public Client() {
+	public ClientPizza() {
 
 	}
 

@@ -37,7 +37,7 @@ public class Emprunt {
 
 	@ManyToOne
 	@JoinColumn(name = "ID_client")
-	private Client client;
+	private ClientPizza client;
 
 	@ManyToMany
 	@JoinTable(name = "compo", joinColumns = @JoinColumn(name = "ID_EMP", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_LIV", referencedColumnName = "ID"))

@@ -23,6 +23,7 @@ public class TestJpa {
 			// livre1.findById(em, 1);
 			// livre1.findByTitle(em, "Germinal");
 
+			// for find all book which are the same loan
 			// Set<Livre> livres = em.find(Emprunt.class, 1).getLivres();
 			// Iterator<Livre> it = livres.iterator();
 			// while (it.hasNext()) {
@@ -30,7 +31,8 @@ public class TestJpa {
 			//
 			// }
 
-			Set<Emprunt> emprunts = em.find(Client.class, 1).getEmprunts();
+			// for find all loans which are the same client
+			Set<Emprunt> emprunts = em.find(ClientPizza.class, 1).getEmprunts();
 			Iterator<Emprunt> ite = emprunts.iterator();
 			while (ite.hasNext()) {
 				LOG.error(ite.next().toString());
